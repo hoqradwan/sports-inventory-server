@@ -2,15 +2,11 @@
 import bcrypt from 'bcrypt';
 import { Schema, model } from 'mongoose';
 import config from '../../config';
-import { TRegisterUser } from './auth.interface';
+import { TRegisterUser } from './user.interface';
 // import { TUser, UserModel } from './user.interface';
 const userSchema = new Schema<TRegisterUser>(
     {
-        id: {
-            type: String,
-            required: true,
-            unique: true,
-        },
+
         email: {
             type: String,
             required: true,
@@ -21,10 +17,7 @@ const userSchema = new Schema<TRegisterUser>(
             required: true,
             select: 0,
         },
-        isDeleted: {
-            type: Boolean,
-            default: false,
-        },
+
     },
     {
         timestamps: true,
