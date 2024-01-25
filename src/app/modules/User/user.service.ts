@@ -28,8 +28,6 @@ const login = async (payload: TLoginUser) => {
         config.jwt_access_expires_in as string,
     );
 
-
-
     return {
         accessToken
     };
