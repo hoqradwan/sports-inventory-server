@@ -1,12 +1,23 @@
+import { Model } from "mongoose";
+
+/* eslint-disable no-unused-vars */
 export type TLoginUser = {
-  id: string;
+  username: string;
   password: string;
 };
 
-export type TRegisterUser = {
+export type TUser = {
   name: string;
+  username: string;
   email: string;
   password: string;
 }
 
-
+export interface UserModel extends Model<TUser> {
+  isUserExistsByUsername(username: string): Promise<TUser>;
+  //instance methods for checking if passwords are matched
+  isPasswordMatched(
+    plainTextPassword: string,
+    hashedPassword: string,
+  ): Promise<boolean>;
+}
